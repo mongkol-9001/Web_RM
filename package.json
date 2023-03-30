@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "jsfeat": "^0.0.8",
+    "ndarray": "^1.0.19",
+    "ndarray-ops": "^1.2.2",
+    "tokenize-text": "^1.1.3"
+  }
+}
