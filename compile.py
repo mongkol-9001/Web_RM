@@ -9,7 +9,7 @@ from keras.utils import pad_sequences
 
 app = Flask(__name__)
 
-model = keras.models.load_model('my_model_maxlen90v6.h5')
+model = keras.models.load_model('my_model_maxlen90v7.h5')
 word_index = {
     '{': 1,
  '}': 2,
@@ -67,12 +67,13 @@ def predict_caption(model, image, max_length):
 
 def resize_img(png_file_path):
     # Load the image
-
-
-# Resize the image to 200x200
+    # Resize the image to 200x200
     resized = cv2.resize(png_file_path, (200, 200))
-
-# Normalize the pixel values to the range [0, 1]
+    # Check if the image has an alpha channel
+    if resized.shape[2] == 4:
+    # Convert the image from BGRA to BGR
+         resized = cv2.cvtColor(resized, cv2.COLOR_BGRA2BGR)
+    # Normalize the pixel values to the range [0, 1]
     normalized = resized / 255.0
     return normalized
 
